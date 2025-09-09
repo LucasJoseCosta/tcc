@@ -1,0 +1,26 @@
+%%%% CAPÍTULO 4 - RESULTADOS E DISCUSSÃO
+
+\chapter{Resultados}\label{cap:resultados}
+
+\section{Análise Qualitativa da Experiência de Desenvolvimento}
+\label{sec:analise_qualitativa}
+
+Além das métricas quantitativas, a avaliação da experiência do desenvolvedor (\textit{Developer Experience}) e da ergonomia de cada plataforma é fundamental para uma análise completa. Esta seção relata as observações práticas coletadas durante a fase de configuração dos ambientes e a implementação inicial, servindo como base para a métrica qualitativa de "Ergonomia do Desenvolvedor".
+
+\subsection{Configuração do Ambiente Python com CustomTkinter}
+
+O ecossistema Python, embora conhecido por sua simplicidade, apresentou um obstáculo inicial significativo relacionado à configuração do ambiente no sistema operacional Windows. Durante a instalação da biblioteca \texttt{customtkinter} via terminal, foi encontrado o erro \texttt{CommandNotFoundException}, indicando que tanto o comando \texttt{python} quanto o gerenciador de pacotes \texttt{pip} não eram reconhecidos pelo sistema.
+
+O diagnóstico do problema, documentado a partir de um registro de interações com a ferramenta de IA ChatGPT fornecido pelo autor, revelou que o interpretador Python não havia sido adicionado à variável de ambiente \texttt{PATH} do Windows durante sua instalação. A solução envolveu a localização manual do executável do Python e a execução dos comandos de instalação utilizando o caminho completo, seguido pela correção manual da variável \texttt{PATH} do sistema para permitir o uso de comandos simplificados. Este cenário ilustra um ponto de fricção comum para desenvolvedores que não estão familiarizados com a configuração de ambientes via linha de comando, representando um custo inicial de tempo e pesquisa para a resolução de problemas.
+
+\subsection{Configuração do Ambiente Electron com TypeScript e React}
+
+A configuração do ambiente para Electron apresentou uma complexidade de natureza diferente. A base, composta pelo Node.js e seu gerenciador de pacotes \texttt{npm}, foi instalada de forma direta e sem intercorrências. O desafio, no entanto, residiu na orquestração das diversas tecnologias envolvidas.
+
+A criação de um projeto que integra Electron, TypeScript e React não é um processo de um único comando. Foi necessário utilizar um template de projeto (\texttt{webpack-typescript}) e, posteriormente, realizar a integração manual da biblioteca React e suas dependências, além de ajustar os arquivos de configuração do Webpack e do TypeScript para que todos os componentes funcionassem em harmonia. Este processo, embora bem documentado pela comunidade, exige um conhecimento prévio da interação entre essas ferramentas e representa uma barreira de entrada maior em comparação com ambientes mais integrados.
+
+\subsection{Configuração do Ambiente C\# com WPF}
+
+Em contraste com os ambientes baseados em scripts, a configuração do ecossistema C\# com WPF mostrou-se a mais direta e integrada, com uma ressalva crucial. Todo o processo é gerenciado pelo instalador do Visual Studio 2022. O ponto crítico de sucesso foi a seleção correta da carga de trabalho (\textit{workload}) \textbf{.NET desktop development} durante a instalação.
+
+Uma vez que essa opção é selecionada, o instalador gerencia todas as dependências necessárias, incluindo o .NET SDK, os templates de projeto para WPF e as ferramentas de build. A criação de um novo projeto é uma ação de poucos cliques dentro do IDE, resultando em uma aplicação ``Olá, Mundo!''  funcional e pronta para o desenvolvimento sem a necessidade de qualquer configuração manual via linha de comando. Esta abordagem guiada e ``tudo-em-um'' representa a menor barreira de entrada para um desenvolvedor iniciante, desde que a configuração inicial no instalador seja feita corretamente. 

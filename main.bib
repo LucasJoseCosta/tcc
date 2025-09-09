@@ -1,0 +1,59 @@
+%%%% REFERÊNCIAS
+%%
+%% Conjunto padronizado de elementos descritivos retirados de um documento, que permite sua identificação individual.
+%%
+%% Cada entrada no arquivo BibTeX segue um formato padrão. Este formato muda ligeiramente baseado no tipo de entrada, mas a sintaxe
+%% continua a mesma.
+%%
+%% O rótulo de cada entrada não pode conter caracteres especiais, acentuados ou cedilha.
+%%
+%% A formatação do texto no campo "AUTHOR" deve obedecer algumas regras:
+%%   - Acento agudo:        "á = {\'a}".
+%%   - Acento crase:        "à = {\`a}".
+%%   - Acento til:          "ã = {\~a}".
+%%   - Acento circunflexo:  "ê = {\^e}".
+%%   - Acento trema:        "ü = {\"u}".
+%%   - Acento na letra i:   "í = {\'\i}".
+%%   - Cedilha:             "ç = {\c{c}}".
+%%   - Sobrenome composto:  "Santos, Filho, Jos{\'e} C. S.; da Silva, Erivanildo Lopes".
+%%   - Nome de organização: "{\mbox IONA Technologies PLC}".
+%%
+%% A formatação do texto no campo "TITLE" deve obedecer algumas regras (também válidas para o texto no campo "AUTHOR"):
+%%   - MAIÚSCULAS: "REAL = {REAL}".
+%%   - Minúsculas: "real = {real}".
+%%   - CamelCase:  "Real = {R}eal".
+
+%% TIPOS DE ENTRADA
+%%
+%% Ao inserir uma referência no banco de dados, a primeira coisa a decidir é o tipo de entrada. Existem vários tipos de entrada, mas
+%% não são completas, porém são suficientes para o BibTeX fornecer entradas para lidar com praticamente qualquer tipo de referência
+%% razoavelmente bem.
+
+%% ARTICLE - Um artigo de um jornal ou revista.
+%%   - Campos requeridos: AUTHOR, TITLE, JOURNAL e YEAR.
+%%   - Campos opcionais: VOLUME, NUMBER, PAGES, MONTH e NOTE.
+@techreport{ibge_censo2017,
+	author      = {{Instituto Brasileiro de Geografia e Estatística (IBGE)}},
+	title       = {{Censo Agropecuário 2017: Resultados Definitivos - Toledo (PR)}},
+	year        = {2018},
+	url         = {https://cidades.ibge.gov.br/brasil/pr/toledo/pesquisa/24/76693},
+	urldate     = {2025-09-02},
+	note        = {Fonte de dados sobre n{\'u}mero de estabelecimentos, {\'a}rea e demograf{\'\i}a dos produtores rurais de Toledo.}
+}
+
+@book{pressman2014engenhariaSoftware,
+	title       = {{Engenharia de Software: Uma Abordagem Profissional}},
+	author      = {Pressman, Roger S. and Maxim, Bruce R.},
+	year        = {2014},
+	publisher   = {McGraw-Hill Education},
+	edition     = {8ª}
+}
+
+@book{batalha2007gestaoAgroindustrial,
+	title       = {{Gest{\~a}o agroindustrial: {GEPAI}}},
+	author      = {Batalha, M{\'a}rio Ot{\'a}vio},
+	year        = {2007},
+	publisher   = {Editora Atlas},
+	edition     = {3ª},
+	note        = {Obra de refer{\^e}ncia em estudos sobre gest{\~a}o no agroneg{\'o}cio brasileiro.}
+}

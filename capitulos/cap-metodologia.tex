@@ -1,0 +1,106 @@
+%%%% CAPÍTULO 3 - MATERIAL E MÉTODOS (PODE SER OUTRO TÍTULO DE ACORDO COM O TRABALHO REALIZADO)
+
+\chapter{Metodologia}
+\label{cha:metodologia}
+
+Este capítulo apresenta o delineamento metodológico e os procedimentos técnicos adotados para a realização da análise comparativa entre as tecnologias selecionadas. O objetivo é estabelecer um protocolo rigoroso e reprodutível para a coleta e análise de dados quantitativos e qualitativos.
+
+\section{Definição do Problema Computacional}
+\label{sec:problema_computacional}
+
+O estudo de caso para esta análise consiste na implementação de um \textbf{"Módulo de Cálculo de Custo e Lucratividade por Cultura"}. A funcionalidade foi selecionada por sua relevância para a gestão agrícola e por sua natureza computacional, que envolve operações de I/O, processamento de dados em memória e renderização de interface gráfica.
+
+\subsection{Especificação da Tarefa}
+A tarefa a ser implementada em cada tecnologia é definida pelas seguintes etapas:
+\begin{enumerate}
+	\item \textbf{Input:} Ler e interpretar um arquivo de dados em formato CSV contendo 10.000 lançamentos financeiros.
+	\item \textbf{Processamento:} Mapear os dados planos do CSV para um modelo de dados hierárquico em memória, conforme especificado na Subseção \ref{ssec:modelo_dados}.
+	\item \textbf{Output:} Exibir os resultados agregados em uma interface gráfica desktop, apresentando uma tabela ou lista com as colunas: "Cultura", "Total Receitas", "Total Despesas" e "Balanço Final", além de métricas calculadas como o balanço por hectare.
+\end{enumerate}
+
+% NOVA SUBSEÇÃO ADICIONADA AQUI
+\subsection{Modelo de Dados}
+\label{ssec:modelo_dados}
+
+Para adicionar um nível de complexidade e realismo ao problema, foi definido um modelo de dados hierárquico que simula a organização de uma propriedade agrícola. A tarefa computacional central envolve a transformação dos dados de um formato plano (CSV) para este modelo estruturado em memória.
+
+\begin{itemize}
+	\item \textbf{Estrutura de Alto Nível: Safra}
+	\begin{itemize}
+		\item \texttt{identificador}: string (ex: "Safra 2024/2025")
+		\item \texttt{culturas}: uma lista de objetos do tipo \texttt{Cultura}
+	\end{itemize}
+	\item \textbf{Estrutura Intermediária: Cultura}
+	\begin{itemize}
+		\item \texttt{nome}: string (ex: "Soja")
+		\item \texttt{area\_plantada\_hectares}: float
+		\item \texttt{lancamentos}: uma lista de objetos do tipo \texttt{LancamentoFinanceiro}
+	\end{itemize}
+	\item \textbf{Estrutura Base: LancamentoFinanceiro}
+	\begin{itemize}
+		\item \texttt{id}: int
+		\item \texttt{data}: date
+		\item \texttt{tipo}: string ('receita' ou 'despesa')
+		\item \texttt{categoria}: string (ex: "Insumos", "Mão de Obra", "Venda Cooperativa")
+		\item \texttt{descricao}: string
+		\item \texttt{valor}: float
+	\end{itemize}
+\end{itemize}
+
+\section{Ambiente de Teste}
+\label{sec:ambiente}
+
+Para garantir a consistência, a imparcialidade e a reprodutibilidade dos resultados, todos os testes de desenvolvimento e desempenho foram executados em um único e consistente ambiente de hardware e software. As especificações exatas da máquina utilizada são detalhadas abaixo.
+
+\begin{itemize}
+	\item \textbf{Hardware:}
+	\begin{itemize}
+		\item Processador: Intel(R) Core(TM) i5-6200U CPU @ 2.30GHz
+		\item Memória RAM: 20,0 GB
+		\item Armazenamento: Unidade de estado sólido (SSD) SATA de 960 GB
+	\end{itemize}
+	\vspace{0.2cm} % Adiciona um pequeno espaço vertical
+	\item \textbf{Software:}
+	\begin{itemize}
+		\item Sistema Operacional: Windows 11 Home Single Language (64-bit), Versão 24H2
+		\item Versão do Python: 3.13.7
+		\item Versão do Node.js: v22.18.0
+		\item Versão do .NET SDK: 9.0.304
+	\end{itemize}
+\end{itemize}
+
+\section{Tecnologias Selecionadas para Análise}
+\label{sec:tecnologias_selecionadas}
+
+Foram selecionadas três plataformas tecnológicas que representam diferentes paradigmas no desenvolvimento de aplicações desktop:
+
+\begin{itemize}
+	\item \textbf{Python com CustomTkinter:} Representando o desenvolvimento rápido com uma linguagem interpretada, dinamicamente tipada, e uma biblioteca de interface gráfica moderna.
+	\item \textbf{Electron com TypeScript e React:} Representando o desenvolvimento de aplicações desktop utilizando tecnologias web, combinando um backend Node.js com uma interface reativa e tipada.
+	\item \textbf{C\# com WPF (Windows Presentation Foundation):} Representando a abordagem tradicional para aplicações Windows com uma linguagem compilada, fortemente tipada e um framework de UI maduro do ecossistema .NET.
+\end{itemize}
+
+
+\section{Métricas de Avaliação}
+\label{sec:metricas}
+
+A comparação entre as implementações será realizada com base em um conjunto expandido de métricas quantitativas e qualitativas.
+
+\subsection{Métricas Quantitativas}
+\begin{itemize}
+	\item \textbf{Tempo de Processamento (ms):} Será medido o tempo médio de 10 execuções para o processamento completo do dataset (etapa 2 da tarefa). Será reportada a média e o desvio padrão para avaliar a consistência do desempenho.
+	\item \textbf{Tempo de CPU (ms):} Para isolar o custo computacional do tempo de I/O, será medido o tempo de processador consumido pela tarefa, uma métrica mais precisa de eficiência de código.
+	\item \textbf{Uso de Memória RAM (MB):} Será monitorado o pico de consumo de memória do processo (Peak Working Set) durante a execução, utilizando as ferramentas de diagnóstico de cada sistema operacional.
+	\item \textbf{Tempo de Renderização da UI (ms):} Medida do tempo decorrido entre o fim do processamento dos dados e a renderização completa da tabela de resultados na interface gráfica.
+	\item \textbf{Tamanho da Aplicação (MB):} Medida do tamanho final do pacote de distribuição/executável gerado e pronto para o usuário final.
+	\item \textbf{Linhas de Código (LoC):} Contabilização das linhas de código escritas pelo desenvolvedor, separando a lógica de negócio da interface de usuário, para avaliar a verbosidade e o esforço de implementação.
+	\item \textbf{Número de Dependências:} Contagem de bibliotecas de terceiros necessárias para a implementação de cada solução.
+\end{itemize}
+
+\subsection{Métricas Qualitativas}
+\begin{itemize}
+	\item \textbf{Ergonomia do Desenvolvedor:} Avaliação da experiência de desenvolvimento, incluindo a facilidade de configuração do ambiente, a velocidade do ciclo de build/debug (ex: hot reload vs. recompilação completa) e a clareza das mensagens de erro.
+	\item \textbf{Complexidade Arquitetural:} Análise da arquitetura de software que cada tecnologia incentiva (ex: baseada em componentes, MVVM, etc.) e a complexidade para implementar um código limpo e manutenível.
+	\item \textbf{Legibilidade e Manutenibilidade do Código:} Comparação da sintaxe e da estrutura do código para avaliar a facilidade de compreensão e modificação futura.
+	\item \textbf{Qualidade do Ecossistema:} Análise da maturidade e abrangência do ecossistema de cada tecnologia, incluindo a qualidade da documentação oficial e o suporte da comunidade.
+\end{itemize}
